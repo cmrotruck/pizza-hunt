@@ -16,6 +16,8 @@ function getPizza() {
   );
   const pizzaId = searchParams.get("id");
 
+  console.log(pizzaId);
+
   //get pizzaInfo
   fetch(`/api/pizzas/${pizzaId}`)
     .then((response) => {
@@ -126,7 +128,8 @@ function handleNewCommentSubmit(event) {
 
   const formData = { commentBody, writtenBy };
 
-  fetch("/api/comments", {
+  console.log("formData", formData);
+  fetch(`/api/comments/${pizzaId}`, {
     method: "post",
     headers: {
       Accept: "application/json",
